@@ -14,7 +14,7 @@ Get-adobject -filter {serviceprincipalname -like "*"}  | Where-Object {$_.distin
 ```
 
 - Enumerate Domain Computers
-```text
+```powershell
 #Get Computers in a specific Domain 
 Get-ADComputer -server Domaincontroller -Filter * -Properties *
 #Get all active computer list in domain
