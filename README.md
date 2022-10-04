@@ -55,7 +55,7 @@ ldapsearch -x -H ldap://dc01.medic.ex -s base -LLL
 ````
 
 - SCAN ICMP 
-```bash
+```shell
 nmap -sP 10.10.10.0/24
 ```
 
