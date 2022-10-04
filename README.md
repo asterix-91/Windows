@@ -48,6 +48,18 @@ Get-ADGroupMember -Identity "Domain Admins" -Recursive
 Get-ADPrincipalGroupMembership -Identity login001     
 ```
 
+- Politique de mot de passe
+#Get policy password
+````
+Get-ADDefaultDomainPasswordPolicy
+````
+
+#Get domain info with ldapsearch cmd
+- LDAPSEARCH
+```
+ldapsearch -x -H ldap://dc01.medic.ex -s base -LLL
+````
+
 - SCAN ICMP 
 ```
 nmap -sP 10.10.10.0/24
@@ -78,3 +90,22 @@ ldapsearch -x -H ldap://dc01.medic.ex -s base -LLL
 nslookup -type=SRV _kerberos._tcp.medic.ex
 ```
 
+- SMBCLIENT
+#List share accesible without login
+```
+smbclient -L //10.40.32.32 --no-pass
+```
+#connect to the share folder without login
+```
+smbclient //10.40.32.32/Replication --no-pass
+```
+#if you can login this is the cdm
+```
+smbclient //10.40.32.32/Replication -U user -W workgroup
+```
+#while connect to smb to dl all folder 
+```
+recurse on
+prompt off
+mget *
+```
