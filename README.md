@@ -1,8 +1,8 @@
-# Windows
+# Windows Active Directory Security
 
 
 - Enumerate Domain Users
-```text
+```powershell
 #Get Users in a specific Domain 
 Get-ADUser -server Domaincontroller -Filter * -Properties *
 #Get Users wit PasswordNotRequired set to true
@@ -23,19 +23,19 @@ Get-ADComputer -Filter {enabled -eq $true} -properties *
 Get-ADComputer -Filter 'operatingsystem -like "*Windows 7*" -and enabled -eq "true"' -Properties *
 ```
 - Enumerate Domain Trust:
-```text
+```powershell
 #Get the list of all trusts within the current domain
 Get-ADTrust -Filter *               
 #Get the list of all trusts within the indicated domain
 Get-ADTrust -Identity us.domain.corporation.local   
 ```
 - Enumerate File Shares:
-```text
+```powershell
 #Retrieves the SMB shares on the computer
 Get-SmbShare
 ```
 - Other Objects Enumeration:
-```text
+```powershell
 #Shows the tickets in memory
 klist
 #Get the default domain password policy from a specified domain
@@ -48,20 +48,14 @@ Get-ADGroupMember -Identity "Domain Admins" -Recursive
 Get-ADPrincipalGroupMembership -Identity login001     
 ```
 
-- Politique de mot de passe
-#Get policy password
-````
-Get-ADDefaultDomainPasswordPolicy
-````
-
-#Get domain info with ldapsearch cmd
-- LDAPSEARCH
+- LDAPSHEARCH
 ```
+#Get domain info with ldapsearch cmd without login
 ldapsearch -x -H ldap://dc01.medic.ex -s base -LLL
 ````
 
 - SCAN ICMP 
-```
+```bash
 nmap -sP 10.10.10.0/24
 ```
 
